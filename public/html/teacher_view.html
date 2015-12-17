@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="header clearfix">
+        <h3>Redigera glosförhör</h3>
+    </div>
+
+    <div class="text-center save-button">
+        <button class="btn btn-success btn-lg" ng-click="save()">Spara</button>
+    </div>
+
+    <div>
+        <form>
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="originalLanguage">Ursprungsspråk</label>
+                            <input type="text" class="form-control" id="originalLanguage" ng-model="vocabularyData.originalLanguageName">
+                        </div>
+
+                        <div class="col-xs-6">
+                            <label for="translatedLanguage">Översatt språk</label>
+                            <input type="text" class="form-control" id="translatedLanguage" ng-model="vocabularyData.translatedLanguageName">
+                        </div>
+                    </div>
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button" ng-click="removeWord($index)" tabindex="-1"
+                                style="visibility: hidden;">Ta bort</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <h3 class="text-center">Glosor</h3>
+
+    <div>
+        <form>
+            <div class="form-group" ng-repeat="word in vocabularyData.words">
+                <div class="input-group">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" ng-model="vocabularyData.words[$index].originalLanguage">
+                        </div>
+
+                        <div class="col-xs-6">
+                            <input type="text" class="form-control" ng-model="vocabularyData.words[$index].translatedLanguage">
+                        </div>
+                    </div>
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button" ng-click="removeWord($index)" tabindex="-1">Ta bort</button>
+                    </span>
+                </div>
+            </div>
+        </form>
+
+        <div class="text-center add-option">
+            <button class="btn btn-success btn-lg" ng-click="addWord()">Lägg till en glosa</button>
+        </div>
+    </div>
+</div>

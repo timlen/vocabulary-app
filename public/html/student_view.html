@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="header clearfix">
+        <h3>Glosförhör</h3>
+    </div>
+
+    <div class="language-names">
+        <form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <label for="originalLanguage">Ursprungsspråk</label>
+                        <input type="text" class="form-control" id="originalLanguage" ng-model="vocabularyData.originalLanguageName" readonly>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <label for="translatedLanguage">Översatt språk</label>
+                        <input type="text" class="form-control" id="translatedLanguage" ng-model="vocabularyData.translatedLanguageName" readonly>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <hr>
+
+    <h3 class="text-center">Mata in rätt översättning</h3>
+
+    <div>
+        <form>
+            <div class="form-group" ng-repeat="word in vocabularyData.words">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="vocabularyData.words[$index].originalLanguage" readonly>
+                    </div>
+
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" ng-model="vocabularyData.words[$index].translatedLanguage"
+                               ng-class="vocabularyData.words[$index].correct ? 'correct-answer' : ''"
+                               tabindex="{{$index + 1}}">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div>
+        <h3 class="text-center">{{message}}</h3>
+    </div>
+
+    <div class="text-center add-option">
+        <button class="btn btn-success btn-lg" ng-click="correct()">Rätta</button>
+    </div>
+</div>
